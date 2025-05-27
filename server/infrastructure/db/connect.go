@@ -20,9 +20,8 @@ type Config struct {
 
 func NewDbConnection() *sql.DB {
 	// Load .env file-nya
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("No .env file found, relying on container environment variables.")
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found at root. Skipping...")
 	}
 
 	// Ambil konfigurasi dari environment variable
