@@ -16,12 +16,10 @@ import (
 
 func Migrate(db *sql.DB, direction string) {
 	// Load .env file-nya
+	// Load .env file-nya
 	err := godotenv.Load()
 	if err != nil {
-		err = godotenv.Load("../.env")
-		if err != nil {
-			log.Fatal(err)
-		}
+		log.Println("No .env file found, relying on container environment variables.")
 	}
 	
 	// Ambil konfigurasi dari environment variable
